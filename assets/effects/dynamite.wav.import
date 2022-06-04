@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/dynamite.wav-3cbbd7c0a49edad18e873a9f64507249.sample"
+
+[deps]
+
+source_file="res://assets/effects/dynamite.wav"
+dest_files=[ "res://.import/dynamite.wav-3cbbd7c0a49edad18e873a9f64507249.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

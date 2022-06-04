@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/transmission_close.wav-999b5c49aa1d8434a3a9d9827690b8ec.sample"
+
+[deps]
+
+source_file="res://assets/effects/transmission_close.wav"
+dest_files=[ "res://.import/transmission_close.wav-999b5c49aa1d8434a3a9d9827690b8ec.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

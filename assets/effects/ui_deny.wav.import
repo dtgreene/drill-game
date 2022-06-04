@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/ui_deny.wav-cfbc982c725592a832ddfaaf7c693a8f.sample"
+
+[deps]
+
+source_file="res://assets/effects/ui_deny.wav"
+dest_files=[ "res://.import/ui_deny.wav-cfbc982c725592a832ddfaaf7c693a8f.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
