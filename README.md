@@ -1,5 +1,7 @@
 # Drill Game
 
+https://charminhands.itch.io/drill-game
+
 <p align="center">
   <img width="650" height="500" src="https://user-images.githubusercontent.com/24302976/172028442-beb0bea0-7e72-42f6-b38f-c1535fe3960c.png">
 </p>
