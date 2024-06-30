@@ -26,6 +26,10 @@ default_bus_layout="res://bus_layout.tres"
 Globals="*res://scripts/globals.gd"
 EffectsPlayer="*res://scripts/effects_player.gd"
 
+[debug]
+
+settings/fps/force_fps=60
+
 [display]
 
 window/size/width=320
