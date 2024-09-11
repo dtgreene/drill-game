@@ -4,7 +4,10 @@ const HealthAndFuel = preload("res://assets/images/health_and_fuel.png")
 
 onready var player = get_node("/root/World/Player")
 
-var health_color = Color(1.00000, 0.00000, 0.25098)
+var default_health_color = Color(1.00000, 0.00000, 0.25098)
+var guardian_health_color = Color(0.376, 1.00000, 0.784)
+
+var health_color = default_health_color
 var fuel_color = Color(1.00000, 0.65098, 0.30196)
 
 func _draw():
@@ -19,3 +22,6 @@ func _draw():
 	var fuel_width = clamp(round(float(player.fuel) / float(player.fuel_max) * 71.0), 0, 71)
 	draw_rect(Rect2(Vector2(8, 13), Vector2(fuel_width, 1)), fuel_color.linear_interpolate(Color(0, 0, 0), 0.3))
 	draw_rect(Rect2(Vector2(8, 14), Vector2(fuel_width, 4)), fuel_color)
+
+func use_guardian_color():
+	health_color = guardian_health_color

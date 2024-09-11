@@ -27,6 +27,9 @@ var loaded_data = null
 var main_music_pos = 0
 var boss_fight_started = false
 var boss_defeated = false
+var message_god_5000_sent = false
+var message_god_10000_sent = false
+var message_god_100000_sent = false
 var message_500_sent = false
 var message_1000_sent = false
 var message_1700_sent = false
@@ -90,8 +93,13 @@ func terrain_ready():
 		player.add_money(loaded_data.player.money)
 		
 		player.cargo_minerals = loaded_data.player.cargo_minerals
-		player.equipment = loaded_data.player.equipment
 		player.hull = loaded_data.player.hull
+		
+		if "has_guardian" in loaded_data.player:
+			if loaded_data.player.has_guardian:
+				player.grant_guardian()
+		
+		player.equipment = loaded_data.player.equipment
 		
 		# drill upgrade
 		player.upgrade_drill(
@@ -123,6 +131,13 @@ func terrain_ready():
 				loaded_data.player.cargo_upgrade_level
 			]
 		)
+		
+		if "message_god_5000_sent" in loaded_data.world:
+			message_god_5000_sent = loaded_data.world.message_god_5000_sent
+		if "message_god_10000_sent" in loaded_data.world:
+			message_god_10000_sent = loaded_data.world.message_god_10000_sent
+		if "message_god_100000_sent" in loaded_data.world:
+			message_god_100000_sent = loaded_data.world.message_god_100000_sent
 		
 		message_500_sent = loaded_data.world.message_500_sent
 		message_1000_sent = loaded_data.world.message_1000_sent
@@ -272,6 +287,55 @@ func player_depth_change(depth):
 	if depth < 7100:
 		if boss_fight_started:
 			stop_boss_fight()
+	
+	if depth == -5100:
+		if !message_god_5000_sent:
+			message_god_5000_sent = true
+			player.add_money(5000)
+			transmission_screen.transmit([
+				"** Transmission Received **",
+				"",
+				"Sender: Mr.Dog",
+				"",
+				"Hark, what strange thing is this? Make haste",
+				"from my domain, Human, for you tread in the",
+				"realm of the divine! Thine foul machinery",
+				"creates much distaste among my choirs.",
+				"",
+				"You are still here? Fine, take this and GET OUT.",
+				"",
+				"** Transmission Terminated **"
+			])
+	elif depth == -10100:
+		if !message_god_10000_sent:
+			message_god_10000_sent = true
+			player.grant_guardian()
+			transmission_screen.transmit([
+				"** Transmission Received **",
+				"",
+				"Sender: GOD",
+				"",
+				"Hast thou tired of tunneling the depths before",
+				"thy time? Seek ye instead to soar the highest",
+				"reaches of my heavens?",
+				"",
+				"Return now to thy rightly domain - carry with",
+				"thee this guardian to aide thy journey.",
+				"",
+				"** Transmission Terminated **"
+			])
+	elif depth == -100100:
+		if !message_god_100000_sent:
+			message_god_100000_sent = true
+			transmission_screen.transmit([
+				"** Transmission Received **",
+				"",
+				"Sender: GOD",
+				"",
+				"Thou has too much time on thy hands.",
+				"",
+				"** Transmission Terminated **"
+			])
 	
 	if depth == 500:
 		if !message_500_sent:

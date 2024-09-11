@@ -160,6 +160,7 @@ func save_game():
 		money = player.money,
 		cargo_minerals = player.cargo_minerals,
 		hull = player.hull,
+		has_guardian = player.has_guardian,
 		equipment = player.equipment,
 		# drill upgrade
 		drill_upgrade_level = player.drill_upgrade.level,
@@ -183,6 +184,9 @@ func save_game():
 		data.terrain.append(used_block)
 	
 	data.world = {
+		message_god_5000_sent = world.message_god_5000_sent,
+		message_god_10000_sent = world.message_god_10000_sent,
+		message_god_100000_sent = world.message_god_100000_sent,
 		message_500_sent = world.message_500_sent,
 		message_1000_sent = world.message_1000_sent,
 		message_1700_sent = world.message_1700_sent,

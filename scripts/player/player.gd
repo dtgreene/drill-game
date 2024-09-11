@@ -77,6 +77,7 @@ var teleport_state = TeleportStates.IDLE
 var teleport_scale = 1
 var last_damage_reason = "Unknown"
 var explosive_cooldown = 0
+var has_guardian = false
 
 # drill upgrade
 var drill_upgrade = null
@@ -330,16 +331,24 @@ func remove_all_minerals():
 	cargo_minerals = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 	cargo_count = 0
 
-func add_hull(amount):
-	hull = clamp(hull + amount, 0, hull_max)
-
 func shake_camera(amount):
 	camera.add_shake(amount)
 
-func remove_hull(amount, reason):
+func grant_guardian():
+	has_guardian = true
+	health_and_fuel.use_guardian_color()
+
+func add_hull(amount):
+	hull = clamp(hull + amount, 0, hull_max)
+
+func remove_hull(amount, reason, override_guardian = false):
 	if !alive: return
 	
-	hull = clamp(hull - amount, 0, hull_max)
+	if has_guardian && !override_guardian:
+		hull = clamp(hull - (amount * 0.5), 0, hull_max)
+	else:
+		hull = clamp(hull - amount, 0, hull_max)
+	
 	drill_car.set_modulate(Color(1, 0, 0))
 	color_decay = 0.5
 	health_and_fuel.update()
@@ -397,7 +406,7 @@ func subtract_fuel(amount):
 	fuel = clamp(fuel - amount, 0, fuel_max)
 	
 	if fuel <= 0:
-		remove_hull(hull_max, "lack of fuel")
+		remove_hull(hull_max, "lack of fuel", true)
 
 func update_fuel():
 	if !alive: return
@@ -411,6 +420,7 @@ func update_fuel():
 		fuel_status.set_text("Fuel Low")
 	else:
 		fuel_status.set_text("")
+	
 	health_and_fuel.update()
 
 func pause_notification():
